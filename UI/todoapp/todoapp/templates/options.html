@@ -1,0 +1,73 @@
+{% extends "layout.html" %} {% import "bootstrap/wtf.html" as wtf %} {% block
+body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <h2>Select options</h2>
+
+      <form
+        method="POST"
+        action="{{ url_for('update_ticket', ticket_id=ticket.id) }}"
+      >
+        {{ form.csrf_token }}
+        <div>{{ wtf.form_field(form.name) }}</div>
+        <div>{{ wtf.form_field(form.label) }}</div>
+        <div>{{ wtf.form_field(form.status) }}</div>
+        <br />
+        <input
+          class="btn btn-outline-secondary text-warning fw-bold"
+          type="submit"
+          name="options"
+          value="Save options"
+        />
+      </form>
+      <br />
+    
+    </div>
+    
+    <div><h3>Activity</h3></dir>
+
+    <form
+      method="POST"
+      action="{{ url_for('create_ticket_comment',
+        ticket_id=ticket.id) }}"
+    >
+      {{ form.csrf_token }}
+      <div>{{ wtf.form_field(form_comment.name) }}</div>
+      <br />
+      <input
+        class="btn btn-outline-secondary text-warning fw-bold"
+        name="comment"
+        type="submit"
+        value="Add a comment"
+      />
+    </form>
+    <br />
+    <div>
+      {%for comment in comments%}
+      <p>
+        @{{comment.user.username}} {{comment.created_at.strftime("%d %B")}} at
+        {{comment.created_at.strftime("%H:%M")}}
+      </p>
+      <input
+        class="form-control"
+        id="disabledInput"
+        type="text"
+        placeholder="{{comment.content}}"
+        disabled
+      />
+      {%endfor%}
+    </div>
+
+    <br />
+    <p class="space-above">
+      <a href="{{ url_for('home') }}">See all tickets</a>
+    </p>
+  </div>
+</div>
+<small class="text-muted"
+>Delete this ticket
+<a href="{{url_for('delete_ticket', ticket_id=ticket.id) }}">✘</a></small
+>
+{% endblock %}
