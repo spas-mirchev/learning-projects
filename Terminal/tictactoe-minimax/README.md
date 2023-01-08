@@ -13,7 +13,6 @@ There are 4 modes available in the game:
 
 The Minimax algorithm used in two of the modes is based on the [this pseudocode](https://en.wikipedia.org/wiki/Minimax#Pseudocode).
 
-![hello](./../../Assets/tictactoe.gif)
 
 <div id="header" align="center">
   <img src="./../../Assets/tictactoe.gif"/>
