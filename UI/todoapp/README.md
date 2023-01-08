@@ -6,14 +6,14 @@ In order to use the app, the user would have to register then login. This would 
 
 The user can also add labels to tickets and move tickets from one status to another.
 
-In application uses Flask, SQLAlchemy, Flask-Login, Flask-Bootstrap and Werkzeug for password hashing.
+The application uses Flask, SQLAlchemy, Flask-Login, Flask-Bootstrap and Werkzeug for password hashing.
 
 Good things to improve would be 
 - the UI in general
 - allow tickets to be dragged across statuses
 - delete comments
   
-  
+
 ## Installation
 
 ``` terminal

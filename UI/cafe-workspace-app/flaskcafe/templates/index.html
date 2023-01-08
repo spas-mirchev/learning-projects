@@ -1,0 +1,102 @@
+{% extends "layout.html" %} {% block body %}
+
+<div class="row">
+  <div class="col-lg-4 col-sm">
+    <span class="label label-info m-3">Features: </span>
+
+    <a
+      class="btn btn-outline-dark"
+      {% if arg1  == None %}
+      href="{{url_for('home', has_wifi=True, has_sockets=arg2, 
+      has_toilet=arg3, can_take_calls=arg4)}}"
+      {% else %}
+      href="{{url_for('home', has_wifi=None, has_sockets=arg2, 
+      has_toilet=arg3, can_take_calls=arg4)}}"
+      {%endif%}
+      role="button"
+      aria-pressed="true"
+      >has wifi</a
+    >
+    <a
+      class="btn btn-outline-dark float-right"
+      {% if arg2 == None %}
+      href="{{ url_for('home', has_wifi=arg1, has_sockets=True, has_toilet=arg3, can_take_calls=arg4) }}"
+      {% else %}
+      href="{{ url_for('home', has_wifi=arg1, has_sockets=None, has_toilet=arg3, can_take_calls=arg4) }}"
+      {%endif%}
+      >has sockets</a
+    >
+    <a
+      class="btn btn-outline-dark"
+      {% if arg3  == None %}
+      href="{{url_for('home', has_wifi=arg1, has_sockets=arg2, has_toilet=True, can_take_calls=arg4)}}"
+      {% else %}
+      href="{{url_for('home', has_wifi=arg1, has_sockets=arg2, has_toilet=None, can_take_calls=arg4)}}"
+      {%endif%}
+      role="button"
+      >has toilet</a
+    >
+    <a
+      class="btn btn-outline-dark"
+      {% if arg4  == None %}
+      href="{{ url_for('home', has_wifi=arg1, has_sockets=arg2, has_toilet=arg3,  can_take_calls=True) }}"
+      {% else %}
+      href="{{ url_for('home', has_wifi=arg1, has_sockets=arg2, has_toilet=arg3,  can_take_calls=None) }}"
+      {%endif%}
+      role="button"
+      >can take calls</a
+    >
+
+    {% for enhanced_cafe in enhanced_cafes %} {% set cafe =
+    enhanced_cafe["cafe"] %} {% set coordinates = enhanced_cafe["coordinates"]
+    %}
+
+    <div
+      class="cafe card mb-3 m-3"
+      style="max-width: 540px"
+      data-coordinate="{{ coordinates }}"
+      data-name="{{cafe.name}}"
+      data-url="{{cafe.img_url}}"
+    >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="{{cafe.img_url}}" class="card-img" alt="oppa.."
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6 class="card-title">{{cafe.name}}</h6>
+            <div style="color: green">
+              {% if arg1 %} {% if cafe.has_wifi == 1 %}
+              <span class="active-filter high">
+                <i class="fa fa-fw fa-wifi fa-border"> </i>
+              </span>
+              {%endif%} {% endif%} {% if arg2%} {% if cafe.has_sockets == 1 %}
+              <span class="active-filter high">
+                <i class="fa fa-fw fa-plug fa-border"> </i>
+              </span>
+              {% endif%} {%endif%} {% if arg3 %} {% if cafe.has_toilet == 1 %}
+              <span class="active-filter high">
+                <i class="fa fa-bath fa-border"></i>
+              </span>
+              {% endif%}{% endif%} {% if arg4%} {% if cafe.can_take_calls == 1
+              %}
+              <span class="active-filter high">
+                <i class="fa fa-headphones fa-border" aria-hidden="true"></i>
+              </span>
+              {% endif%}{% endif%}
+            </div>
+            <p class="card-text">
+              <p class="text-muted">Number of seats {{cafe.seats}}<span class="badge rounded-pill bg-warning text-dark ms-3">Coffee price: {{cafe.coffee_price}}</span></p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  <div class="col-lg-8 col-sm mt-3">
+    <div id="map" class="h-100 w-100" style="position: fixed"></div>
+  </div>
+</div>
+{% endblock %}
