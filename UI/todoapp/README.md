@@ -8,31 +8,27 @@ The user can also add labels to tickets and move tickets from one status to anot
 
 The application uses Flask, SQLAlchemy, Flask-Login, Flask-Bootstrap and Werkzeug for password hashing.
 
-Good things to improve would be 
+Good things to improve would be
+
 - the UI in general
 - allow tickets to be dragged across statuses
 - delete comments
-  
+
+<div id="header" align="center">
+  <img src="todoapp.gif"/>
+</div>
 
 ## Installation
 
-``` terminal
+```terminal
 # Create an environment variable
 python -m venv .env
 
 python -m venv .env
 
-source .env/bin/activate 
+source .env/bin/activate
 
 # Run the app
 
-python app.py 
+python app.py
 ```
-
-
-<div id="header" align="center">
-  <img src="./../../Assets/todoapp.gif"/>
-</div>
-
-
-
