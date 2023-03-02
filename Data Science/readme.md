@@ -21,6 +21,19 @@ For my experiments I used the same dataset of Artists, Users and Scrobbles from 
 
 I'd like to study graph-based recommendation systems more in-depth to see how they would compare to the current algorithms.
 
+### Other experiments
+
+- [Experiments](recommendation_models/experiments)
+
+### Technologies
+
+- Pytorch
+- Numpy
+- Pandas
+- Plotty
+- Matplot
+- OpenCV
+
 ### Credits
 
 [Kaggle Lastfm Recommending Music Artists Data](https://www.kaggle.com/code/pcbreviglieri/recommending-music-artists-with-boltzmann-machines/data).
